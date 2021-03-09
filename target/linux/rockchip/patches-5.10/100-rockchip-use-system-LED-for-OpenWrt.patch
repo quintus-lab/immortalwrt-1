@@ -8,11 +8,15 @@ Use the SYS LED on the casing for showing system status.
 This patch is kept separate from the NanoPi R2S support patch, as i plan
 on submitting the device support upstream.
 
+--modified for vendor inno usb3 driver led setting: quintus-lab
+
 Signed-off-by: David Bauer <mail@david-bauer.net>
 ---
- arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts   | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+index 5219247..9cffe5e 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
 @@ -13,6 +13,13 @@
@@ -29,3 +33,24 @@ Signed-off-by: David Bauer <mail@david-bauer.net>
  	chosen {
  		stdout-path = "serial2:1500000n8";
  	};
+@@ -43,7 +50,7 @@
+ 		pinctrl-names = "default";
+ 
+ 		lan_led: led-0 {
+-			gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
++			gpios = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
+ 			label = "nanopi-r2s:green:lan";
+ 		};
+ 
+@@ -294,7 +301,7 @@
+ 
+ 	leds {
+ 		lan_led_pin: lan-led-pin {
+-			rockchip,pins = <2 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		sys_led_pin: sys-led-pin {
+-- 
+2.25.1
+
